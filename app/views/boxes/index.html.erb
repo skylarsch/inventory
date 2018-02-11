@@ -1,0 +1,39 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-12'>
+      <h3><%= link_to 'Boxes', boxes_path %></h3>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-12'>
+      <%= link_to 'New Box', new_box_path, class: 'btn btn-outline-primary' %>
+      <%= link_to 'Report', report_boxes_path, class: 'btn btn-outline' %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-12'>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tag</th>
+            <th scope="col">Items</th>
+            <th scope="col">Kind</th>
+            <th scope="col">Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @boxes.each do |box| %>
+            <tr>
+              <th scope="row"><%= box.id %></th>
+              <td><%= link_to box.display_tag, box_path(box) %></td>
+              <td><%= box.items.count %></td>
+              <td><%= box.kind.capitalize %></td>
+              <td><%= box.location %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
